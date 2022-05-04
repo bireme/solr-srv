@@ -1,0 +1,17 @@
+version: '3'
+services:
+  solr:
+    container_name: ${CONTAINER_NAME}
+    restart: unless-stopped
+    image: bireme/solr:8.11.1
+    ports:
+      - "${CONTAINER_PORT}:8983"
+    env_file:
+      - .env
+    environment:
+      - SOLR_HEAP=${SOLR_MEMORY}
+      - SOLR_USER=${SOLR_USER}
+    user: "${SOLR_USER}"
+    volumes:
+      - ./solr_indexes:/var/solr/data
+      - ./conf/solr.in.sh:/etc/default/solr.in.sh
