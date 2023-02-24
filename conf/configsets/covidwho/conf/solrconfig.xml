@@ -440,40 +440,32 @@
          will be overridden by parameters in the request
       -->
      <lst name="defaults">
-         <str name="echoParams">explicit</str>
-         <str name="df">tw</str>
-         <str name="facet">true</str>
-         <str name="facet.field">descriptor_filter</str>
-         <str name="facet.field">media_collection_filter</str>
-         <str name="facet.field">media_type_filter</str>
-         <str name="facet.field">event_type</str>
-         <str name="facet.field">institution_type</str>
-         <str name="facet.field">institution_thematic</str>
-         <str name="facet.field">type</str>
-         <str name="facet.field">format</str>
-         <str name="facet.field">country</str>
-         <str name="facet.field">publication_type</str>
-         <str name="facet.field">publication_language</str>
-         <str name="facet.field">publication_country</str>
-         <str name="facet.field">publication_year</str>
-         <str name="facet.field">journal</str>
-         <str name="facet.field">indexed_database</str>
-         <str name="facet.field">database</str>
-         <str name="facet.field">collection</str>
-         <str name="facet.field">scope</str>
-         <str name="facet.field">scope_region</str>
-         <str name="facet.field">scope_state</str>
-         <str name="facet.field">act_type</str>
-         <str name="facet.field">course_type</str>
-         <str name="facet.field">tec_resource_type</str>
-         <str name="facet.field">learning_resource_type</str>
-         <str name="facet.field">learning_context</str>
-         <str name="facet.field">aggregation_level</str>
-         <str name="facet.field">audience</str>
-         <str name="facet.field">license</str>
-         <str name="facet.field">language</str>
-         <str name="facet.limit">20</str>
-         <str name="facet.mincount">1</str>
+          <str name="echoParams">explicit</str>
+          <str name="df">tw</str>
+          <str name="facet">true</str>
+          <str name="facet.field">fulltext</str>
+          <str name="facet.field">no_indexing</str>
+          <str name="facet.field">collection</str>
+          <str name="f.collection.facet.sort">index</str>
+          <str name="f.collection.facet.limit">-1</str>
+          <str name="facet.field">ec</str>
+          <str name="facet.field">db</str>
+          <str name="facet.field">mj_cluster</str>
+          <str name="facet.field">type_of_study</str>
+          <str name="facet.field">covidwho_topics</str>
+          <str name="facet.field">aspect</str>
+          <str name="facet.field">limit</str>
+          <str name="facet.field">pais_assunto</str>
+          <str name="facet.field">la</str>
+          <str name="facet.field">descritor_local_cluster</str>
+          <str name="facet.field">ta_cluster</str>
+          <str name="facet.field">jd</str>
+          <str name="facet.field">year_cluster</str>
+          <str name="facet.field">type</str>
+          <str name="facet.field">pais_afiliacao</str>
+          <str name="facet.field">instituicao_pais_afiliacao</str>
+          <str name="facet.limit">10</str>
+          <str name="facet.mincount">1</str>
      </lst>
 
     </requestHandler>

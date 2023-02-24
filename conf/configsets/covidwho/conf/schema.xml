@@ -25,12 +25,40 @@
         </analyzer>
       </fieldType>
 
+     <fieldType name="decs_new"              class="solr.TextField" omitNorms="false">
+        <analyzer type="index">
+            <tokenizer class="solr.WhitespaceTokenizerFactory" />
+            <filter class="solr.ASCIIFoldingFilterFactory" />
+            <filter class="solr.LowerCaseFilterFactory" />            
+            <filter class="org.bireme.dia.analysis.SynonymFilterFactory" category="true" syn="true" keyqlf="false" onlyqlf="false" />
+        </analyzer>
+        <analyzer type="query">
+            <tokenizer class="solr.WhitespaceTokenizerFactory" />
+            <filter class="solr.ASCIIFoldingFilterFactory" />
+            <filter class="solr.LowerCaseFilterFactory" />
+        </analyzer>
+      </fieldType>
+
       <fieldType name="decs_keyword"             class="solr.TextField">
         <analyzer type="index" class="org.bireme.dia.analysis.DeCSKeywordAnalyzer" />
         <analyzer type="query">
           <tokenizer class="solr.KeywordTokenizerFactory" />
             <filter class="solr.ASCIIFoldingFilterFactory" />
             <filter class="solr.LowerCaseFilterFactory" />
+        </analyzer>
+      </fieldType>
+
+      <fieldType name="decs_keyword_new"             class="solr.TextField">
+        <analyzer type="index">
+            <tokenizer class="solr.KeywordTokenizerFactory" />
+            <filter class="solr.ASCIIFoldingFilterFactory" />
+            <filter class="solr.LowerCaseFilterFactory" />            
+            <filter class="org.bireme.dia.analysis.SynonymFilterFactory" category="true" syn="true" keyqlf="true" onlyqlf="false" />
+        </analyzer>
+        <analyzer type="query">
+            <tokenizer class="solr.KeywordTokenizerFactory" />
+            <filter class="solr.ASCIIFoldingFilterFactory" />
+            <filter class="solr.LowerCaseFilterFactory" />            
         </analyzer>
       </fieldType>
 
@@ -47,6 +75,20 @@
           <tokenizer class="solr.KeywordTokenizerFactory" />
           <filter class="solr.ASCIIFoldingFilterFactory" />
           <filter class="solr.LowerCaseFilterFactory" />
+        </analyzer>
+      </fieldType>
+
+      <fieldType name="decs_qualifier_new"             class="solr.TextField">
+        <analyzer type="index">
+            <tokenizer class="solr.KeywordTokenizerFactory" />
+            <filter class="solr.ASCIIFoldingFilterFactory" />
+            <filter class="solr.LowerCaseFilterFactory" />            
+            <filter class="org.bireme.dia.analysis.SynonymFilterFactory" category="false" syn="true" keyqlf="true" onlyqlf="true" />
+        </analyzer>
+        <analyzer type="query">
+            <tokenizer class="solr.KeywordTokenizerFactory" />
+            <filter class="solr.ASCIIFoldingFilterFactory" />
+            <filter class="solr.LowerCaseFilterFactory" />            
         </analyzer>
       </fieldType>
 
@@ -182,12 +224,12 @@
       <field name="services"                    type="string"                   indexed="false"  stored="true"   multiValued="true" />
       <!-- decs fields -->
   <!--<field name="mj"                          type="decs_authorized_category" indexed="true"  stored="false" multiValued="true"  termVectors="true" />-->
-      <field name="mj"                          type="decs_keyword"             indexed="true"   stored="false"  multiValued="true"   termVectors="true" />
-      <field name="mh"                          type="decs_keyword"             indexed="true"   stored="true"   multiValued="true"   termVectors="true" />
-      <field name="pt"                          type="decs_keyword"             indexed="true"   stored="true"   multiValued="true" />
-      <field name="mh_words"                    type="decs"                     indexed="true"   stored="false"  multiValued="true" />
-      <field name="ct"                          type="decs"                     indexed="true"   stored="true"   multiValued="true"   termVectors="true" />
-      <field name="sh"                          type="decs_qualifier"           indexed="true"   stored="true"   multiValued="true"   termVectors="true" />
+      <field name="mj"                          type="decs_keyword_new"             indexed="true"   stored="false"  multiValued="true"   termVectors="true" />
+      <field name="mh"                          type="decs_keyword_new"             indexed="true"   stored="true"   multiValued="true"   termVectors="true" />
+      <field name="pt"                          type="decs_keyword_new"             indexed="true"   stored="true"   multiValued="true" />
+      <field name="mh_words"                    type="decs_new"                     indexed="true"   stored="false"  multiValued="true" />
+      <field name="ct"                          type="decs_new"                     indexed="true"   stored="true"   multiValued="true"   termVectors="true" />
+      <field name="sh"                          type="decs_qualifier_new"           indexed="true"   stored="true"   multiValued="true"   termVectors="true" />
       <!-- sort -->
       <field name="order_sjr"                   type="tfloat"                   indexed="true"   stored="true"   multiValued="false" />
       <field name="weight"                      type="tfloat"                   indexed="true"   stored="true"   multiValued="false" />
