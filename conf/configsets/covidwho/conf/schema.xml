@@ -29,7 +29,7 @@
         <analyzer type="index">
             <tokenizer class="solr.WhitespaceTokenizerFactory" />
             <filter class="solr.ASCIIFoldingFilterFactory" />
-            <filter class="solr.LowerCaseFilterFactory" />            
+            <filter class="solr.LowerCaseFilterFactory" />
             <filter class="org.bireme.dia.analysis.SynonymFilterFactory" category="true" syn="true" keyqlf="false" onlyqlf="false" />
         </analyzer>
         <analyzer type="query">
@@ -52,13 +52,13 @@
         <analyzer type="index">
             <tokenizer class="solr.KeywordTokenizerFactory" />
             <filter class="solr.ASCIIFoldingFilterFactory" />
-            <filter class="solr.LowerCaseFilterFactory" />            
+            <filter class="solr.LowerCaseFilterFactory" />
             <filter class="org.bireme.dia.analysis.SynonymFilterFactory" category="true" syn="true" keyqlf="true" onlyqlf="false" />
         </analyzer>
         <analyzer type="query">
             <tokenizer class="solr.KeywordTokenizerFactory" />
             <filter class="solr.ASCIIFoldingFilterFactory" />
-            <filter class="solr.LowerCaseFilterFactory" />            
+            <filter class="solr.LowerCaseFilterFactory" />
         </analyzer>
       </fieldType>
 
@@ -82,13 +82,13 @@
         <analyzer type="index">
             <tokenizer class="solr.KeywordTokenizerFactory" />
             <filter class="solr.ASCIIFoldingFilterFactory" />
-            <filter class="solr.LowerCaseFilterFactory" />            
+            <filter class="solr.LowerCaseFilterFactory" />
             <filter class="org.bireme.dia.analysis.SynonymFilterFactory" category="false" syn="true" keyqlf="true" onlyqlf="true" />
         </analyzer>
         <analyzer type="query">
             <tokenizer class="solr.KeywordTokenizerFactory" />
             <filter class="solr.ASCIIFoldingFilterFactory" />
-            <filter class="solr.LowerCaseFilterFactory" />            
+            <filter class="solr.LowerCaseFilterFactory" />
         </analyzer>
       </fieldType>
 
@@ -134,6 +134,22 @@
         <analyzer type="index" class="org.bireme.dia.analysis.BVSStandardAnalyzer" />
         <analyzer type="query">
           <tokenizer class="solr.WhitespaceTokenizerFactory" />
+            <filter class="solr.ASCIIFoldingFilterFactory" />
+            <filter class="solr.LowerCaseFilterFactory" />
+            <filter class="solr.WordDelimiterFilterFactory" generateWordParts="1" generateNumberParts="1" catenateWords="1" catenateNumbers="1" catenateAll="0" preserveOriginal="1" />
+        </analyzer>
+      </fieldType>
+
+      <fieldType name="text_with_decs_new"      class="solr.TextField">
+        <analyzer type="index">
+            <tokenizer class="solr.WhitespaceTokenizerFactory" />
+            <filter class="solr.ASCIIFoldingFilterFactory" />
+            <filter class="solr.LowerCaseFilterFactory" />
+            <filter class="solr.WordDelimiterFilterFactory" generateWordParts="1" generateNumberParts="1" catenateWords="1" catenateNumbers="1" catenateAll="0" preserveOriginal="1" />
+            <filter class="org.bireme.dia.analysis.SynonymFilterFactory" category="true" syn="true" keyqlf="true" onlyqlf="false" />
+        </analyzer>
+        <analyzer type="query">
+            <tokenizer class="solr.WhitespaceTokenizerFactory" />
             <filter class="solr.ASCIIFoldingFilterFactory" />
             <filter class="solr.LowerCaseFilterFactory" />
             <filter class="solr.WordDelimiterFilterFactory" generateWordParts="1" generateNumberParts="1" catenateWords="1" catenateNumbers="1" catenateAll="0" preserveOriginal="1" />
@@ -270,7 +286,7 @@
 
       <!-- catch all fields containing: -->
       <!--    other searchable text fields (implemented via copyField further on in this schema) -->
-      <field name="tw"                          type="text_with_decs"           indexed="true"   stored="false"  multiValued="true" />
+      <field name="tw"                          type="text_with_decs_new"           indexed="true"   stored="false"  multiValued="true" />
       <!--    cn_?? kind -->
       <field name="cn"                          type="text"                     indexed="true"   stored="false"  multiValued="true" />
       <!--    pr_?? kind -->
