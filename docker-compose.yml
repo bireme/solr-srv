@@ -3,12 +3,13 @@ services:
   solr:
     container_name: ${CONTAINER_NAME}
     restart: unless-stopped
-    image: bireme/solr:9.1.1
+    image: bireme/solr:9.2.1
     ports:
       - "${CONTAINER_PORT}:8983"
     env_file:
       - .env
     environment:
       - SOLR_HEAP=${SOLR_MEMORY}
+      - ZK_HOST=${ZK_HOST}
     volumes:
-       - ./solr_indexes:/bitnami
+       - ${SOLR_INDEX_PATH}:/bitnami
