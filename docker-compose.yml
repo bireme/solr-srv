@@ -1,6 +1,15 @@
 version: '3'
 services:
+  solr_setup:
+    image: bireme/solr:9.2.1
+    user: root
+    command: bash -c "chown -R 1001 /bitnami"
+    volumes:
+      - ${SOLR_INDEX_PATH}:/bitnami
+
   solr:
+    depends_on:
+      - solr_setup
     container_name: ${CONTAINER_NAME}
     restart: unless-stopped
     image: bireme/solr:9.2.1
@@ -12,7 +21,5 @@ services:
       - SOLR_HEAP=${SOLR_MEMORY}
       - ZK_HOST=${ZK_HOST}
     volumes:
-       - solr_indexes:/bitnami
+      - ${SOLR_INDEX_PATH}:/bitnami
 
-volumes:
-  solr_indexes:
