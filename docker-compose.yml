@@ -12,4 +12,7 @@ services:
       - SOLR_HEAP=${SOLR_MEMORY}
       - ZK_HOST=${ZK_HOST}
     volumes:
-       - ${SOLR_INDEX_PATH}:/bitnami
+       - solr_indexes:/bitnami
+
+volumes:
+  solr_indexes:
