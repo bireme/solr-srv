@@ -3,9 +3,10 @@ services:
   solr_setup:
     image: bireme/solr:9.2.1
     user: root
-    command: bash -c "chown -R 1001 /bitnami"
+    command: bash -c "chown -R 1001 /bitnami && chown -R 1001 /opt/bitnami/solr/logs"
     volumes:
       - ${SOLR_INDEX_PATH}:/bitnami
+      - ${SOLR_LOG_PATH}:/opt/bitnami/solr/logs
 
   solr:
     depends_on:
@@ -22,4 +23,5 @@ services:
       - ZK_HOST=${ZK_HOST}
     volumes:
       - ${SOLR_INDEX_PATH}:/bitnami
+      - ${SOLR_LOG_PATH}:/opt/bitnami/solr/logs
 
