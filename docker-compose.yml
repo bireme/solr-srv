@@ -24,6 +24,10 @@ services:
     volumes:
       - ${SOLR_INDEX_PATH}:/bitnami
       - ${SOLR_LOG_PATH}:/opt/bitnami/solr/logs
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
+    networks:
+      - nginx-proxy
+
+networks:
+  nginx-proxy:
+    external: true
 
