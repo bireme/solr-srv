@@ -4,7 +4,8 @@ COMPOSE_FILE = docker-compose.yml
 
 core?=test
 container?=solr9-srv1
-
+shards?=3
+replication?=2
 
 ## docker-compose shortcuts
 run:
@@ -35,11 +36,11 @@ update_core_config:
 	docker cp ./conf/configsets/$(core)/conf/ $(container):/bitnami/solr/server/solr/$(core)/
 
 zk_upconfig:
-	docker-compose -f $(COMPOSE_FILE) exec -T solr /opt/bitnami/solr/bin/solr zk upconfig -n $(core) -d server/solr/configsets/$(core)/
+	docker-compose -f $(COMPOSE_FILE) exec -T solr /opt/bitnami/solr/bin/solr zk upconfig -n $(core) -d /bitnami/solr/server/solr/configsets/$(core)/
 
 create_core:
 	docker-compose -f $(COMPOSE_FILE) exec -T solr /opt/bitnami/solr/bin/solr create_core -c $(core) -d $(core)
 
 create_collection_cloud:
-	docker-compose -f $(COMPOSE_FILE) exec -T solr /opt/bitnami/solr/bin/solr create_collection -c $(core) -d $(core) -shards 3 -replicationFactor 2
+	docker-compose -f $(COMPOSE_FILE) exec -T solr /opt/bitnami/solr/bin/solr create_collection -c $(core) -d $(core) -shards $(shards) -replicationFactor $(replication)
 
