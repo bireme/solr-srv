@@ -24,5 +24,6 @@ services:
     volumes:
       - ${SOLR_INDEX_PATH}:/bitnami
       - ${SOLR_LOG_PATH}:/opt/bitnami/solr/logs
-    network_mode: "bridge"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
