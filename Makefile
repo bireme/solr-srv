@@ -21,7 +21,7 @@ stop:
 	@docker-compose -f $(COMPOSE_FILE) stop
 
 rm:
-	@docker-compose -f $(COMPOSE_FILE) rm
+	@docker-compose -f $(COMPOSE_FILE) rm -f
 
 ps:
 	@docker-compose -f $(COMPOSE_FILE) ps

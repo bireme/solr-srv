@@ -1,7 +1,7 @@
 version: '3'
 services:
   solr_setup:
-    image: bireme/solr:9.2.1
+    image: bireme/solr:9.3.0
     user: root
     command: bash -c "chown -R 1001 /bitnami && chown -R 1001 /opt/bitnami/solr/logs"
     volumes:
@@ -13,7 +13,7 @@ services:
       - solr_setup
     container_name: ${CONTAINER_NAME}
     restart: unless-stopped
-    image: bireme/solr:9.2.1
+    image: bireme/solr:9.3.0
     ports:
       - "${CONTAINER_PORT}:8983"
     env_file:
